@@ -20,6 +20,10 @@
     
 }
 
+- (void) parseFileSystem {
+    NSLog(@"test");
+}
+
 #pragma mark Class Methods
 
 + (NSString*) pathToFileSystem {

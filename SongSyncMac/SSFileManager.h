@@ -12,6 +12,7 @@
 
 - (BOOL) fileSystemExists;
 - (void) createFileSystem;
+- (void) parseFileSystem;
 
 + (NSString*) pathToFileSystem;
 

@@ -12,8 +12,23 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    BOOL result = [[SSFileManager singleton] fileSystemExists];
-    NSLog((result) ? @"exists" : @"does not exists");
+    NSLog(@"Starting SongSync...");
+    [self start];
+    NSLog(@"SongSync has started...");
 }
 
+- (void) start {
+    // Just the singleton file system manager
+    SSFileManager *manager = [SSFileManager singleton];
+    
+    // Does the internal file system exist?
+    BOOL result = [manager fileSystemExists];
+    
+    // if not, lets create it
+    if(!result) {
+        [manager createFileSystem];
+    }
+    
+    [NSTimer scheduledTimerWithTimeInterval:5.0 target:manager selector:@selector(parseFileSystem) userInfo:nil repeats:YES];
+}
 @end
