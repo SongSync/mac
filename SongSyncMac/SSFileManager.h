@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CommonCrypto/CommonDigest.h>
 #import "SSMediaManager.h"
 #import "SSSong.h"
 
@@ -15,6 +16,7 @@
 - (BOOL) fileSystemExists;
 - (void) createFileSystem;
 - (void) parseFileSystem;
+- (NSString *)md5StringFromData:(NSData *)data;
 
 + (NSString*) pathToFileSystem;
 

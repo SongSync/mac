@@ -23,6 +23,11 @@
 }
 
 - (void) parseFileSystem {
+    NSArray *songs = [self loadFilesFromFileSystem];
+    NSString *checksum = [self calculateChecksum:songs];
+}
+
+- (NSArray*) loadFilesFromFileSystem {
     NSMutableArray *songs = [[NSMutableArray alloc] init];
     NSFileManager *manager = [NSFileManager defaultManager];
     
@@ -54,7 +59,7 @@
                 
                 int oldArrayCount = [filesystemPath count];
                 
-                NSArray *finalPath = [songPath subarrayWithRange:NSMakeRange(oldArrayCount - 1, [songPath count] - (oldArrayCount - 1))]; 
+                NSArray *finalPath = [songPath subarrayWithRange:NSMakeRange(oldArrayCount - 1, [songPath count] - (oldArrayCount - 1))];
                 
                 NSString *fileName = [finalPath objectAtIndex:[finalPath count] - 1]; // Final
                 NSString *playlistName = (NSString*) [finalPath objectAtIndex:1]; // Final
@@ -62,17 +67,39 @@
                 if([finalPath count] <= 2) {
                     playlistName = @"Default";
                 }
-
+                
                 SSSong *song = [SSMediaManager readMetadata:url];
                 [song inspect];
                 
                 [songs addObject:song];
+            } else {
+                NSData *data = [NSData dataWithContentsOfURL:url];
+                NSLog(@"%@", data);
             }
             
         }
     }
     
-    // Now we have an NSArray full of songs.
+    return songs;
+}
+
+- (NSString *) md5ChecksumFromData:(NSData *)data
+{
+    void *cData = malloc([data length]);
+    unsigned char resultCString[16];
+    [data getBytes:cData length:[data length]];
+    
+    CC_MD5(cData, [data length], resultCString);
+    free(cData);
+    
+    NSString *result = [NSString stringWithFormat:
+                        @"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X",
+                        resultCString[0], resultCString[1], resultCString[2], resultCString[3],
+                        resultCString[4], resultCString[5], resultCString[6], resultCString[7],
+                        resultCString[8], resultCString[9], resultCString[10], resultCString[11],
+                        resultCString[12], resultCString[13], resultCString[14], resultCString[15]
+                        ];
+    return result;
 }
 
 #pragma mark Class Methods
