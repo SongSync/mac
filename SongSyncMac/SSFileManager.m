@@ -17,7 +17,9 @@
 }
 
 - (void) createFileSystem {
+    NSFileManager *manager = [NSFileManager defaultManager];
     
+    [manager createDirectoryAtPath:[SSFileManager pathToFileSystem] withIntermediateDirectories:YES attributes:nil error:nil];
 }
 
 - (void) parseFileSystem {

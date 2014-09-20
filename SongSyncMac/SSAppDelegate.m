@@ -26,6 +26,7 @@
     
     // if not, lets create it
     if(!result) {
+        NSLog(@"File system does not exist. Creating now...");
         [manager createFileSystem];
     }
     
