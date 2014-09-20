@@ -30,6 +30,8 @@
         [manager createFileSystem];
     }
     
-    [NSTimer scheduledTimerWithTimeInterval:5.0 target:manager selector:@selector(parseFileSystem) userInfo:nil repeats:YES];
+    //[NSTimer scheduledTimerWithTimeInterval:5.0 target:manager selector:@selector(parseFileSystem) userInfo:nil repeats:YES];
+
+    [manager parseFileSystem];
 }
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SSMediaManager.h"
 
 @interface SSFileManager : NSObject
 

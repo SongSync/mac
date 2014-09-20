@@ -20,6 +20,9 @@
 		0C0F8D2619CD82E8009E1AC8 /* SongSyncMacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0F8D2519CD82E8009E1AC8 /* SongSyncMacTests.m */; };
 		0C0F8D3019CD8377009E1AC8 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C0F8D2F19CD8377009E1AC8 /* Preferences.xib */; };
 		0C0F8D3719CD8533009E1AC8 /* SSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0F8D3619CD8533009E1AC8 /* SSFileManager.m */; };
+		0CB3C4C319CD97BC006D156E /* SSMediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB3C4C219CD97BC006D156E /* SSMediaManager.m */; };
+		0CB3C4C619CD97FB006D156E /* SSSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB3C4C519CD97FB006D156E /* SSSong.m */; };
+		0CB3C4C819CD9871006D156E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CB3C4C719CD9871006D156E /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,11 @@
 		0C0F8D2F19CD8377009E1AC8 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		0C0F8D3519CD8533009E1AC8 /* SSFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFileManager.h; sourceTree = "<group>"; };
 		0C0F8D3619CD8533009E1AC8 /* SSFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFileManager.m; sourceTree = "<group>"; };
+		0CB3C4C119CD97BC006D156E /* SSMediaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSMediaManager.h; sourceTree = "<group>"; };
+		0CB3C4C219CD97BC006D156E /* SSMediaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSMediaManager.m; sourceTree = "<group>"; };
+		0CB3C4C419CD97FB006D156E /* SSSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSong.h; sourceTree = "<group>"; };
+		0CB3C4C519CD97FB006D156E /* SSSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSong.m; sourceTree = "<group>"; };
+		0CB3C4C719CD9871006D156E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CB3C4C819CD9871006D156E /* AVFoundation.framework in Frameworks */,
 				0C0F8CFC19CD82E8009E1AC8 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,6 +109,7 @@
 		0C0F8CFA19CD82E8009E1AC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0CB3C4C719CD9871006D156E /* AVFoundation.framework */,
 				0C0F8CFB19CD82E8009E1AC8 /* Cocoa.framework */,
 				0C0F8D1A19CD82E8009E1AC8 /* XCTest.framework */,
 				0C0F8CFD19CD82E8009E1AC8 /* Other Frameworks */,
@@ -163,6 +173,8 @@
 		0C0F8D3119CD8380009E1AC8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0CB3C4C419CD97FB006D156E /* SSSong.h */,
+				0CB3C4C519CD97FB006D156E /* SSSong.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -190,6 +202,8 @@
 				0C0F8D0E19CD82E8009E1AC8 /* SSAppDelegate.m */,
 				0C0F8D3519CD8533009E1AC8 /* SSFileManager.h */,
 				0C0F8D3619CD8533009E1AC8 /* SSFileManager.m */,
+				0CB3C4C119CD97BC006D156E /* SSMediaManager.h */,
+				0CB3C4C219CD97BC006D156E /* SSMediaManager.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -294,9 +308,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CB3C4C619CD97FB006D156E /* SSSong.m in Sources */,
 				0C0F8D3719CD8533009E1AC8 /* SSFileManager.m in Sources */,
 				0C0F8D0F19CD82E8009E1AC8 /* SSAppDelegate.m in Sources */,
 				0C0F8D0819CD82E8009E1AC8 /* main.m in Sources */,
+				0CB3C4C319CD97BC006D156E /* SSMediaManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +525,7 @@
 				0C0F8D2B19CD82E8009E1AC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0C0F8D2C19CD82E8009E1AC8 /* Build configuration list for PBXNativeTarget "SongSyncMacTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +534,7 @@
 				0C0F8D2E19CD82E8009E1AC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
