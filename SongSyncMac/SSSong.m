@@ -9,5 +9,7 @@
 #import "SSSong.h"
 
 @implementation SSSong
-
+- (void) inspect {
+    NSLog(@"Title: %@\nArtist: %@\nAlbum Title: %@\nCopyrights: %@, Type: %@", [self title], [self artist], [self albumTitle], [self copyrights], [self type]);
+}
 @end

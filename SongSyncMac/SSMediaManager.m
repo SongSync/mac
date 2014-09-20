@@ -11,13 +11,25 @@
 @implementation SSMediaManager
 
 + (SSSong*) readMetadata:(NSURL *)path {
+    SSSong *song = [[SSSong alloc] init];
+    
     AVURLAsset *asset = [AVURLAsset URLAssetWithURL:path options:nil];
-    
     for(NSString *format in [asset availableMetadataFormats]) {
-        NSLog(@"%@", format);
+        for(AVMetadataItem *item in [asset metadataForFormat:format]) {
+            if([[item commonKey] isEqualToString:@"title"]) {
+                song.title = (NSString *)[item value];
+            } else if([[item commonKey] isEqualToString:@"artist"]) {
+                song.artist = (NSString *)[item value];
+            } else if([[item commonKey] isEqualToString:@"albumName"]) {
+                song.albumTitle = (NSString *)[item value];
+            } else if([[item commonKey] isEqualToString:@"copyrights"]) {
+                song.copyrights = (NSString *)[item value];
+            } else if([[item commonKey] isEqualToString:@"title"]) {
+                song.type = (NSString *)[item value];
+            }
+        }
     }
-    
-    return nil;
+    return song;
 }
 
 @end

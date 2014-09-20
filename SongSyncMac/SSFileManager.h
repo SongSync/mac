@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SSMediaManager.h"
+#import "SSSong.h"
 
 @interface SSFileManager : NSObject
 

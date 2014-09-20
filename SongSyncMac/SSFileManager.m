@@ -23,6 +23,7 @@
 }
 
 - (void) parseFileSystem {
+    NSMutableArray *songs = [[NSMutableArray alloc] init];
     NSFileManager *manager = [NSFileManager defaultManager];
     
     NSArray *keys = [NSArray arrayWithObject:NSURLIsDirectoryKey];
@@ -42,9 +43,11 @@
         NSNumber *isHidden = nil;
         
         if (![url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:&error] || ![url getResourceValue:&isHidden forKey:NSURLIsHiddenKey error:&error]) { //Make sure its not hidden, and determining if its a directory
-            NSLog(@"ERROR!!!");
+            NSLog(@"Error: %@", error);
         } else if(![isHidden boolValue]) {
+            
             if(![isDirectory boolValue]) {
+                
                 // Gather the filesystem and new song path to get the difference
                 NSArray *filesystemPath = [[NSURL URLWithString:[SSFileManager pathToFileSystem]] pathComponents];
                 NSArray *songPath = [url pathComponents];
@@ -60,10 +63,16 @@
                     playlistName = @"Default";
                 }
 
-                //NSArray *metadata = [SSMediaManager readMetadata:url];
+                SSSong *song = [SSMediaManager readMetadata:url];
+                [song inspect];
+                
+                [songs addObject:song];
             }
+            
         }
     }
+    
+    // Now we have an NSArray full of songs.
 }
 
 #pragma mark Class Methods
